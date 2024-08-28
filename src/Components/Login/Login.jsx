@@ -54,7 +54,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="w-3/4 lg:w-1/2 mx-auto my-10 mb-14 mt-24 shadow-lg px-8 py-3">
+      <div className=" lg:w-1/2 mx-auto my-10 mb-14 mt-24 shadow-lg px-8 py-3">
         {apiError && (
           <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50">
             {apiError}

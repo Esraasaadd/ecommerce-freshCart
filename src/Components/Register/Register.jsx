@@ -68,7 +68,7 @@ export default function Register() {
 
   return (
     <>
-      <div className="w-3/4 lg:w-1/2 mx-auto mt-16 mb-5 shadow-lg px-8">
+      <div className="lg:w-1/2 mx-auto mt-16 mb-10 shadow-lg px-8 pb-3">
         {apiError && (
           <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50">
             {apiError}

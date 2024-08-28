@@ -62,7 +62,7 @@ export default function RecentProducts() {
   };
 
   return (
-    <div className="row p-8">
+    <div className="row lg:p-8">
       {products.length > 0 ? (
         products.map((product) => (
           <div className="w-1/2 lg:w-1/6" key={product.id}>

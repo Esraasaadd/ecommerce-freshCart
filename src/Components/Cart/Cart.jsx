@@ -177,8 +177,8 @@ export default function Cart() {
             <h2>Your cart is empty!</h2>
             <p>Browse our categories and discover our best deals!</p>
 
-            <button className="mb-5 bg-[#12a822] font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center justify-center">
-              <Link to={"/"} className="text-white">
+            <button className="mb-5 bg-[#12a822] font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center justify-center hover:bg-green-700">
+              <Link to={"/"} className="text-white hover:text-white">
                 Start Shopping
               </Link>
             </button>
