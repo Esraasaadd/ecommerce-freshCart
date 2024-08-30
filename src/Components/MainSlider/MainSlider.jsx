@@ -21,7 +21,7 @@ export default function MainSlider() {
 
   return <>
     
-    <div className="row my-7">
+    <div className="row my-7 shadow-lg">
     
       <div className='w-1/2'>
       <Slider {...settings}>

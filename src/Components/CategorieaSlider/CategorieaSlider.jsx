@@ -39,7 +39,7 @@ export default function CategorieaSlider() {
   }, []);
   return (
     <>
-      <h2 className= "mb-4 font-semibold text-gray-500">
+      <h2 className= "mb-4 font-semibold text-gray-500 ">
         Show popular categories
       </h2>
       <Slider {...settings} className="mb-10">

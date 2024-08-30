@@ -124,7 +124,7 @@ export default function ProductDetails() {
               </div>
               <button
                 onClick={() => handleAddToCart(product.id)}
-                className="p-1 text-white hover:bg-green-500 rounded-lg bg-green-600 w-full mt-4"
+                className="btn py-1"
                 disabled={loadingProductId === product.id} // Disable button when loading
               >
                 {loadingProductId === product.id ? (

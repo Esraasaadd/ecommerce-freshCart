@@ -62,19 +62,19 @@ export default function RecentProducts() {
   };
 
   return (
-    <div className="row lg:p-8">
+    <div className="row lg:py-8 shadow-lg lg:gap-6 justify-center">
       {products.length > 0 ? (
         products.map((product) => (
-          <div className="w-1/2 lg:w-1/6" key={product.id}>
-            <div className="product my-2 mx-5 me-3">
+          <div className="w-1/2 lg:w-1/6 lg:border border-green-400 shadow-lg  transform transition-transform duration-300 lg:hover:scale-105" key={product.id}>
+            <div className="product my-2 mx-5 me-3 relative group">
               <Link to={`/productdetails/${product.id}/${product.category.name}`}>
                 <img src={product.imageCover} alt="" className="w-full" />
               </Link>
               <div className="flex justify-between py-3">
-                <h3 className=" text-green-600">{product.category.name}</h3>
+                <h3 className="text-green-600">{product.category.name}</h3>
                 <i
                   onClick={() => toggleWishlist(product.id)}
-                  className={`cursor-pointer text-red-500 ${
+                  className={`cursor-pointer text-red-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute top-0 right-0 ${
                     wishlistStatus[product.id]
                       ? "fa-solid fa-heart"
                       : "fa-regular fa-heart"
@@ -84,7 +84,7 @@ export default function RecentProducts() {
               <h3 className="mb-3 font-medium">
                 {product.title.split(" ").slice(0, 2).join(" ")}
               </h3>
-              <div className="row justify-between px-3">
+              <div className="row justify-between">
                 <span>{product.price} EGP</span>
                 <span>
                   <i className="fas fa-star text-yellow-400"></i>{" "}
@@ -111,8 +111,6 @@ export default function RecentProducts() {
     </div>
   );
 }
- 
-
 
 /* 
 import axios from "axios";

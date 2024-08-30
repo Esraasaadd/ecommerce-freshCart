@@ -4,9 +4,10 @@ import { WishlistContext } from "../../Context/WishlistContext";
 import { CartContext } from "../../Context/CartContext";
 
 export default function Wishlist() {
-  let { getWishlist, wishlist, removeFromWishlist } =
-    useContext(WishlistContext);
-  let { addProductToCart } = useContext(CartContext);
+  const { getWishlist, wishlist, removeFromWishlist } = useContext(WishlistContext);
+  const { addProductToCart } = useContext(CartContext);
+  
+  const [loadingProductId, setLoadingProductId] = useState(null);
 
   useEffect(() => {
     document.title = "Wishlist";
@@ -14,7 +15,18 @@ export default function Wishlist() {
 
   useEffect(() => {
     getWishlist();
-  }, []);
+  }, [getWishlist]);
+
+  const handleAddToCart = async (productId) => {
+    setLoadingProductId(productId);
+    try {
+      await addProductToCart(productId);
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+    } finally {
+      setLoadingProductId(null);
+    }
+  };
 
   return (
     <>
@@ -28,10 +40,7 @@ export default function Wishlist() {
             <table className="w-full text-sm text-left rtl:text-right text-gray-500">
               <tbody>
                 {wishlist?.data?.map((product, index) => (
-                  <tr
-                    key={index}
-                    className="bg-white border-b hover:bg-gray-50 "
-                  >
+                  <tr key={index} className="bg-white border-b hover:bg-gray-50">
                     <div className="lg:flex items-center justify-between py-5 lg:py-0">
                       <div className="flex items-center">
                         <i
@@ -43,7 +52,7 @@ export default function Wishlist() {
                         <img
                           src={product.imageCover}
                           className="w-16 md:w-32 max-w-full max-h-full"
-                          alt=""
+                          alt={product.title}
                         />
                       </div>
 
@@ -54,13 +63,18 @@ export default function Wishlist() {
                       </div>
 
                       <button
-                        onClick={() => {
-                          addProductToCart(product.id);
-                        }}
-                        className="my-5 lg:my-0 w-full lg:w-1/6 text-white bg-green-600 hover:bg-green-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center justify-center"
+                        onClick={() => handleAddToCart(product.id)}
+                        className="my-5 lg:my-0 w-full lg:w-1/6 btn py-2 text-center flex items-center justify-center"
+                        disabled={loadingProductId === product.id}
                       >
-                        Add To Cart
-                        <i className="ms-2 fa-solid fa-cart-shopping text-white text-xl"></i>
+                        {loadingProductId === product.id ? (
+                           <i className="fas fa-spinner fa-spin"></i>
+                        ) : (
+                          <>
+                            Add To Cart
+                            <i className="ms-2 fa-solid fa-cart-shopping text-white text-xl"></i>
+                          </>
+                        )}
                       </button>
                     </div>
                   </tr>

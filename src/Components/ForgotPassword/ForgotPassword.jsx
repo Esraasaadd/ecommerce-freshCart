@@ -72,7 +72,7 @@ export default function ForgotPassword() {
           )}
           <button
             type="submit"
-            className=" text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center mb-6"
+            className="btn focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full px-5 py-2.5 text-center mb-6"
           >
              {loading ? (
                 <i className="fas fa-spinner fa-spin"></i>

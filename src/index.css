@@ -8,7 +8,7 @@
 }
 
 .btn{
-    @apply text-white bg-green-400 px-4 rounded-lg w-full mt-2
+    @apply bg-gradient-to-l from-green-500 to-green-600 hover:bg-gradient-to-r text-white rounded-lg w-full my-2 
 }
 
 
@@ -122,5 +122,5 @@ a , a:hover{
       transform: scale(1.0); 
     } 
   }  .active{
-    @apply text-green-600 hover:text-green-500 
+    @apply text-green-600 hover:text-green-500 pb-1 border-green-500 border-b-2 
 }

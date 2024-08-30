@@ -110,7 +110,7 @@ export default function Cart() {
                     <Link to={"/checkout"}>
                       <button
                         type="button"
-                        className="w-full text-white bg-green-600 hover:bg-green-500  font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center justify-center my-4"
+                        className="w-full btn mt-2 py-2.5 text-center flex items-center justify-center my-4"
                       >
                         <svg
                           className="w-4 h-4 me-3"
@@ -152,7 +152,7 @@ export default function Cart() {
                     <Link to={"/checkout"}>
                       <button
                         type="button"
-                        className="text-white bg-green-600 hover:bg-green-500  font-medium rounded-lg text-sm px-5 py-2.5 text-center flex items-center justify-center my-4"
+                        className="btn py-2 text-center flex items-center justify-center my-4"
                       >
                         <svg
                           className="w-4 h-4 me-3"

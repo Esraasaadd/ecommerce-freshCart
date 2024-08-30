@@ -43,34 +43,54 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="shadow-lg bg-gray-300 md:fixed top-0 inset-x-0 rounded-md md:rounded-full py-2 md:px-32 md:py-5 capitalize z-50 overflow-hidden transition-[max-height] duration-1000 ease-in-out"
+        className="shadow-lg bg-gray-200 md:fixed top-0 inset-x-0 rounded-md md:rounded-full py-2 md:px-32 md:py-6 capitalize z-50 overflow-hidden transition-[max-height] duration-1000 ease-in-out"
         style={{ maxHeight }}
       >
         <i
           className="fa-solid fa-bars text-3xl absolute top-5 cursor-pointer left-5 md:invisible me-3"
           onClick={toggleNav}
         ></i>
-        <img className="md:hidden my-4 ms-20 md:my-0" src={logo} width={120} alt="" />
+        <img
+          className="md:hidden my-4 ms-20 md:my-0"
+          src={logo}
+          width={120}
+          alt=""
+        />
         <div className="flex flex-col md:flex-row text-gray-500">
           <div className="flex flex-col md:items-center md:justify-between md:flex-row space-x-3">
-          <img className="hidden md:block my-4 ms-20 md:my-0" src={logo} width={120} alt="" />
+            <img
+              className="hidden md:block my-4 ms-20 md:my-0"
+              src={logo}
+              width={120}
+              alt=""
+            />
 
             {userLogin && (
               <ul className=" md:flex md:flex-row space-x-2 mb-6 md:mb-0 ms-3">
                 <li className="ms-2">
-                  <NavLink to="" onClick={handleLinkClick}><span className="hover:text-green-600">Home</span> </NavLink>
+                  <NavLink to="" onClick={handleLinkClick}>
+                    <span className="hover:text-green-600">Home</span>{" "}
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="products" onClick={handleLinkClick}><span className="hover:text-green-600">Products</span> </NavLink>
+                  <NavLink to="products" onClick={handleLinkClick}>
+                    <span className="hover:text-green-600">Products</span>{" "}
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="categories" onClick={handleLinkClick}><span className="hover:text-green-600">Categories</span> </NavLink>
+                  <NavLink to="categories" onClick={handleLinkClick}>
+                    <span className="hover:text-green-600">Categories</span>{" "}
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="brands" onClick={handleLinkClick}><span className="hover:text-green-600">Brands</span> </NavLink>
+                  <NavLink to="brands" onClick={handleLinkClick}>
+                    <span className="hover:text-green-600">Brands</span>{" "}
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="allorders" onClick={handleLinkClick}><span className="hover:text-green-600">MyOrders</span> </NavLink>
+                  <NavLink to="allorders" onClick={handleLinkClick}>
+                    <span className="hover:text-green-600">MyOrders</span>{" "}
+                  </NavLink>
                 </li>
               </ul>
             )}
@@ -97,21 +117,35 @@ export default function Navbar() {
                       </span>
                     </li>
                   </ul>
-                  <li className="absolute top-6 end-10 md:static">
-                    <span onClick={signout} className="cursor-pointer text-gray-600">
+                  <div className="icons flex gap-2 text-gray-800 ps-3">
+                    <i className="fab fa-facebook text-lg pt-1"></i>
+                    <i className="fab fa-youtube text-lg pt-1"></i>
+                    <i className="fab fa-tiktok text-lg pt-1"></i>
+                    <i className="fa-brands fa-instagram text-lg pt-1"></i>
+                  </div>
+                  <li className="absolute top-6 end-10 md:static md:pe-16">
+                    <span
+                      onClick={signout}
+                      className=" cursor-pointer text-gray-600"
+                    >
                       Logout
+                      <i className="ms-2 fa-solid fa-right-from-bracket"></i>
                     </span>
                   </li>
                 </>
               ) : (
                 <>
-                <ul className="flex gap-x-2 absolute top-6 md:top-0 end-5">
-                  <li>
-                    <NavLink to="login" onClick={handleLinkClick}>Login</NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="register" onClick={handleLinkClick}>Register</NavLink>
-                  </li>
+                  <ul className="flex gap-x-2 absolute top-6 md:top-0 end-5">
+                    <li>
+                      <NavLink to="login" onClick={handleLinkClick}>
+                        Login
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="register" onClick={handleLinkClick}>
+                        Register
+                      </NavLink>
+                    </li>
                   </ul>
                 </>
               )}
