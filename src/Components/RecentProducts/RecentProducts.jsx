@@ -65,9 +65,14 @@ export default function RecentProducts() {
     <div className="row lg:py-8 shadow-lg lg:gap-6 justify-center">
       {products.length > 0 ? (
         products.map((product) => (
-          <div className="w-1/2 lg:w-1/6 lg:border border-green-400 shadow-lg  transform transition-transform duration-300 lg:hover:scale-105" key={product.id}>
+          <div
+            className="w-1/2 lg:w-1/6 lg:border border-green-400 shadow-lg  transform transition-transform duration-300 lg:hover:scale-105"
+            key={product.id}
+          >
             <div className="product my-2 mx-5 me-3 relative group">
-              <Link to={`/productdetails/${product.id}/${product.category.name}`}>
+              <Link
+                to={`/productdetails/${product.id}/${product.category.name}`}
+              >
                 <img src={product.imageCover} alt="" className="w-full" />
               </Link>
               <div className="flex justify-between py-3">

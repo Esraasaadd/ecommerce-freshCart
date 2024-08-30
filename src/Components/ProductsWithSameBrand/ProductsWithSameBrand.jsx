@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import style from "./ProductsWithSameBrand.module.css";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Loading from "../Loading/Loading";
 import image from '../../assets/images/no_result.gif'
+import { CartContext } from "../../Context/CartContext";
 
 export default function ProductsWithSameBrand() {
   let { brandName } = useParams();
   let [products, setProducts] = useState([]);
   let [loading, setLoading] = useState(true); // Loading state
+  const [loadingProductId, setLoadingProductId] = useState(null); // Track loading state for each product
+  let { addProductToCart } = useContext(CartContext);
+
 
   async function allProducts() {
 
@@ -31,6 +35,15 @@ export default function ProductsWithSameBrand() {
   useEffect(() => {
     allProducts();
   }, [brandName]);
+  const handleAddToCart = async (productId) => {
+    setLoadingProductId(productId); // Set the loading state for the specific product
+    try {
+      await addProductToCart(productId);
+    } finally {
+      setLoadingProductId(null); // Reset the loading state after the operation
+    }
+  };
+
   return (
     <div className="row">
       {loading?(<Loading/>) :products.length>0?products.map((product) => (
@@ -50,7 +63,16 @@ export default function ProductsWithSameBrand() {
                 </span>
               </div>
             </Link>
-            <button className="btn">Add To Cart</button>
+            <button  onClick={() => handleAddToCart(product.id)}
+                className="btn"
+                disabled={loadingProductId === product.id} // Disable button when loading
+              >
+                {loadingProductId === product.id ? (
+                  <i className="fas fa-spinner fa-spin"></i>
+                ) : (
+                  "Add to cart"
+                )}
+              </button>
           </div>
         </div>
       )):(<div className="w-full p-11">

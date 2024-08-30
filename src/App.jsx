@@ -57,17 +57,19 @@ let routers = createBrowserRouter([
 function App() {
   return (
   <>
+    <UserContextProvider>
+
   <WishlistContextProvider>
   <CartContextProvider>
-  <UserContextProvider>
     <QueryClientProvider client={query}>
   <RouterProvider router={routers}></RouterProvider>
   <Toaster />
   <ReactQueryDevtools/>
   </QueryClientProvider>
-  </UserContextProvider>
   </CartContextProvider>
   </WishlistContextProvider>
+  </UserContextProvider>
+
   </>)
 }
 

@@ -1,11 +1,14 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { UserContext } from "./UserContext";
 
 export let CartContext =createContext()
 
 export default function CartContextProvider ({children}){
 
+    let {userLogin}=useContext(UserContext)
+    
     let [cart,setCart]=useState([])
     let [isLoading,setIsLoading]=useState(false)
 
@@ -13,7 +16,14 @@ export default function CartContextProvider ({children}){
         token:localStorage.getItem("userToken"),
     }
 
+    
     async function addProductToCart(productId){
+        const token = localStorage.getItem("userToken");
+        if (!token) {
+          toast.error("You need to be logged in to add products to the cart.");
+          return;
+        }
+    
         setIsLoading(true)
        await axios.post(`https://ecommerce.routemisr.com/api/v1/cart`,
             {
@@ -24,6 +34,8 @@ export default function CartContextProvider ({children}){
     )
     .then((resp)=>{
         toast.success(resp.data.message ,{duration:2000});
+        getCart(); // Refresh cart after adding a product
+
         setCart(resp.data)
         setIsLoading(false)  
     })
@@ -85,10 +97,11 @@ export default function CartContextProvider ({children}){
         })
     }
     
-    
     useEffect(() => {
-        getCart();
-    }, []);
+        if (headers.token) {
+            getCart();
+        }
+    }, [headers.token , userLogin]);
     
     return <CartContext.Provider value={{addProductToCart,getCart ,cart,setCart , updateCart,deleteProduct,checkout,clearCart , isLoading}}>
         {children}
