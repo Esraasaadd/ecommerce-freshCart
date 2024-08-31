@@ -35,12 +35,12 @@ export default function Allorders() {
     <>
       {orders.length > 0 ? (
         <>
-          <div className="flex items-center w-full justify-center">
-            <h1 className="text-3xl text-center font-semibold py-10">Orders History</h1>
-            <i className="fa-solid fa-cart-shopping fa-2x text-green-600 ms-2"></i>
+          <div className="flex items-center justify-center bg-gradient-to-l from-green-400 to-green-600 w-1/4 my-10 py-2 text-white rounded-md mx-auto">
+            <h1 className="text-3xl text-center font-semibold">Orders History</h1>
+            <i className="fa-solid fa-cart-shopping fa-2x ms-2"></i>
           </div>
           {orders.map((order, index) => (
-            <div key={index} className="lg:m-5 my-10 p-3 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 lg:relative">
+            <div key={index} className="lg:m-5 my-10 p-3 rounded-lg shadow-lg lg:relative border border-green-400">
               <div className="lg:flex justify-between items-center">
                 <h1 className="mb-5 text-green-600 text-xl">Order#{order.id}</h1>
                 <h2 className="mb-8 me-12"><span className="text-green-600 font-semibold">Order Date</span>: {order.createdAt.split('').slice(0,10).join('')}</h2>
@@ -50,12 +50,12 @@ export default function Allorders() {
                   <img src={item.product.imageCover} className="w-36 mx-6" alt="" />
                   <div>
                     <h2 className="lg:text-xl">{item.product.title}</h2>
-                    <h2><span className="font-semibold">Count</span>: {item.count}</h2>
-                    <h2><span className="font-semibold">Price</span>: {item.price}</h2>
+                    <h2 ><span className="font-semibold text-green-500">Count</span> : {item.count}</h2>
+                    <h2 ><span className="font-semibold text-green-500">Price</span> : {item.price} EGP</h2>
                   </div>
                 </div>
               ))}
-              <div className="lg:flex items-center lg:gap-x-5 lg:absolute end-3 bottom-5">
+              <div className="lg:flex items-center lg:gap-x-5 lg:absolute end-3 bottom-5 text-lg">
                 <h2 className="my-2">Is Paid: <span className="bg-green-600 rounded-lg px-2 py-1 text-white">{order.isPaid ? "Yes" : "No"}</span></h2>
                 <h2 className="my-2">Is Delivered: <span className="bg-red-600 rounded-lg px-2 py-1 text-white">{order.isDelivered ? "Yes" : "No"}</span></h2>
                 <h2>Payment Method Type: <span className="text-green-700">{order.paymentMethodType}</span></h2>
