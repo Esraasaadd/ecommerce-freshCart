@@ -22,7 +22,8 @@ export default function Categories() {
   },[])
     
   return <>
-    
+{/*         <h1 className="bg-gradient-to-l from-gray-400 to-gray-600 rounded-lg py-2 text-center text-white mt-10 ms-28 lg:w-1/4 text-2xl">Our Categories</h1>
+ */}
     <div className="container text-gray-600 mb-14">
   <div className="row gap-10 justify-center">
     {categories.length>0? categories.map((category,index)=>(

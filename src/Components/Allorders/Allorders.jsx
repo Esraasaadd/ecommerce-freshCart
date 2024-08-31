@@ -41,7 +41,7 @@ export default function Allorders() {
           </div>
           {orders.map((order, index) => (
             <div key={index} className="lg:m-5 my-10 p-3 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 lg:relative">
-              <div className="flex justify-between items-center">
+              <div className="lg:flex justify-between items-center">
                 <h1 className="mb-5 text-green-600 text-xl">Order#{order.id}</h1>
                 <h2 className="mb-8 me-12"><span className="text-green-600 font-semibold">Order Date</span>: {order.createdAt.split('').slice(0,10).join('')}</h2>
               </div>
@@ -55,7 +55,7 @@ export default function Allorders() {
                   </div>
                 </div>
               ))}
-              <div className="lg:flex items-center lg:gap-x-5 lg:absolute end-3 bottom-2">
+              <div className="lg:flex items-center lg:gap-x-5 lg:absolute end-3 bottom-5">
                 <h2 className="my-2">Is Paid: <span className="bg-green-600 rounded-lg px-2 py-1 text-white">{order.isPaid ? "Yes" : "No"}</span></h2>
                 <h2 className="my-2">Is Delivered: <span className="bg-red-600 rounded-lg px-2 py-1 text-white">{order.isDelivered ? "Yes" : "No"}</span></h2>
                 <h2>Payment Method Type: <span className="text-green-700">{order.paymentMethodType}</span></h2>

@@ -34,6 +34,8 @@ export default function ProductDetails() {
       .then((resp) => {
         setProduct(resp.data.data);
         setLoading(false);
+        console.log(resp.data.data);
+        
       })
       .catch(() => {
         setLoading(false);
@@ -106,8 +108,10 @@ export default function ProductDetails() {
             <div className="lg:w-3/4 p-4">
               <h3 className="text-2xl">{product?.title}</h3>
               <h4 className="text-gray-600 my-4">{product?.description}</h4>
+              <h4 className="mb-2">- {product?.brand.name}</h4>
+
               <div className="flex justify-between items-center">
-                <h4 className="mb-2">{product?.category.name}</h4>
+                <h4 className="mb-2">- {product?.category.name}</h4>
                 <i
                   className={`cursor-pointer text-red-600 text-xl ${
                     isInWishlist ? "fa-solid fa-heart" : "fa-regular fa-heart"
@@ -136,9 +140,9 @@ export default function ProductDetails() {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row lg:gap-4 justify-center">
             {relatedProduct.map((relatedProduct) => (
-              <div className="w-1/2 lg:w-1/6" key={relatedProduct.id}>
+              <div className="w-1/2 lg:w-1/6 lg:border p-2 border-green-500 lg:shadow-md hover:shadow-md" key={relatedProduct.id}>
                 <div className="product my-2 me-3">
                   <Link
                     to={`/productdetails/${relatedProduct.id}/${relatedProduct.category.name}`}
@@ -148,7 +152,7 @@ export default function ProductDetails() {
                     <h3 className="mb-3 font-medium">
                       {relatedProduct.title.split(" ").slice(0, 2).join(" ")}
                     </h3>
-                    <div className="row justify-between px-3">
+                    <div className="row justify-between">
                       <span>{relatedProduct.price}EGP</span>
                       <span>
                         <i className="fas fa-star text-yellow-400"></i>{" "}

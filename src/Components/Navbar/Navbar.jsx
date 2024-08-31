@@ -73,27 +73,27 @@ export default function Navbar() {
 
           {userLogin && (
             <ul className=" md:flex md:flex-row space-x-2 mb-6 md:mb-0 ms-3">
-              <li className="ms-2">
+              <li className="ms-2 mb-1">
                 <NavLink to="" onClick={handleLinkClick}>
                   <span className="hover:text-green-600">Home</span>
                 </NavLink>
               </li>
-              <li>
+              <li className="mb-1">
                 <NavLink to="products" onClick={handleLinkClick}>
                   <span className="hover:text-green-600">Products</span>
                 </NavLink>
               </li>
-              <li>
+              <li className="mb-1">
                 <NavLink to="categories" onClick={handleLinkClick}>
                   <span className="hover:text-green-600">Categories</span>
                 </NavLink>
               </li>
-              <li>
+              <li className="mb-1">
                 <NavLink to="brands" onClick={handleLinkClick}>
                   <span className="hover:text-green-600">Brands</span>
                 </NavLink>
               </li>
-              <li>
+              <li className="mb-1">
                 <NavLink to="allorders" onClick={handleLinkClick}>
                   <span className="hover:text-green-600">MyOrders</span>
                 </NavLink>

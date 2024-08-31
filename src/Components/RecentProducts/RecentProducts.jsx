@@ -66,7 +66,7 @@ export default function RecentProducts() {
       {products.length > 0 ? (
         products.map((product) => (
           <div
-            className="w-1/2 lg:w-1/6 lg:border border-green-400 shadow-lg  transform transition-transform duration-300 lg:hover:scale-105"
+            className="w-1/2 lg:w-1/6 lg:border border-green-400 shadow-md hover:shadow-2xl  transform transition-all duration-300 lg:hover:scale-105"
             key={product.id}
           >
             <div className="product my-2 mx-5 me-3 relative group">
