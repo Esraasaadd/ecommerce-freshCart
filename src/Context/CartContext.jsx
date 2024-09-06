@@ -78,7 +78,7 @@ export default function CartContextProvider ({children}){
     }
 
     function checkout(shippingAddress){
-        axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.data._id}?url=http://localhost:5173`, {shippingAddress}, {headers})
+        axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart.data._id}?url=https://ecommerce-fresh-cart-opal.vercel.app/`, {shippingAddress}, {headers})
         .then((resp)=>{
             console.log(resp.data);
             // Remove any trailing slash from session URL before navigating
